@@ -20,9 +20,8 @@ steps:
   - name: Testing
     image: tonistiigi/binfmt
     privileged: true
-    # group: test
     commands:
-      - install all
+      - /usr/bin/binfmt --install all
 
 depends_on:
   - lint
