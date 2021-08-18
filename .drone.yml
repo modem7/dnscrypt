@@ -10,6 +10,13 @@ steps:
       - hadolint --version
       - hadolint Dockerfile*
 
+trigger:
+  event:
+    - promote
+  target:
+    - 2.1.0
+    - production
+
 ---
 
 kind: pipeline
