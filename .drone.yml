@@ -15,9 +15,9 @@ trigger:
     - promote
     - custom
   target:
-    - 2.1.0
-    - 2.0.45
-    - production
+    include:
+      - 2.1.0
+      - 2.0.45
 
 ---
 
