@@ -10,6 +10,15 @@ steps:
       - hadolint --version
       - hadolint Dockerfile*
 
+trigger:
+  event:
+    - promote
+    - custom
+  target:
+    - 2.1.0
+    - 2.0.45
+    - production
+
 ---
 
 kind: pipeline
@@ -119,7 +128,6 @@ trigger:
     - promote
   target:
     - 2.1.0
-    - production
 
 depends_on:
   - lint
