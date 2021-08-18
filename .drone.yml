@@ -48,6 +48,10 @@ volumes:
 depends_on:
   - lint
 
+trigger:
+  event:
+    - custom
+
 ---
 
 kind: pipeline
