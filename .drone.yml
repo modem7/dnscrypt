@@ -10,13 +10,6 @@ steps:
       - hadolint --version
       - hadolint Dockerfile*
 
-trigger:
-  event:
-    - promote
-  target:
-    - 2.1.0
-    - production
-
 ---
 
 kind: pipeline
@@ -55,13 +48,6 @@ volumes:
   - name: dockersock
     host: 
       path: /var/run/docker.sock
-
-trigger:
-  event:
-    - promote
-  target:
-    - 2.1.0
-    - production
 
 depends_on:
   - lint
