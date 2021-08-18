@@ -125,7 +125,7 @@ depends_on:
 
 kind: pipeline
 type: docker
-name: deploy
+name: "2.0.45"
 
 platform:
   os: linux
