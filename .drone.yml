@@ -74,10 +74,13 @@ steps:
       use_cache: true
       cache_from: "modem7/dnscrypt-proxy:latest"
       platforms:  # if it doesn't work run docker run --privileged --rm tonistiigi/binfmt --install all
+        - linux/386
         - linux/amd64
         - linux/arm/v6
         - linux/arm/v7
         - linux/arm64/v8
+        - linux/ppc64le
+        - linux/s390x
       username:
         from_secret: docker_username
       password:
