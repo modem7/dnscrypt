@@ -119,3 +119,4 @@ trigger:
 
 depends_on:
   - lint
+  - buildtest
