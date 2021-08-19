@@ -97,7 +97,7 @@ steps:
         - 2.1.0
 
   - name: slack
-    image: plugins/slack
+    image: themaz/drone-slack
     settings:
       webhook:
         from_secret: slack_hook
@@ -170,7 +170,7 @@ steps:
         - 2.0.45
 
   - name: slack
-    image: plugins/slack
+    image: themaz/drone-slack
     settings:
       webhook:
         from_secret: slack_hook
