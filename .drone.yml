@@ -178,6 +178,7 @@ steps:
       status: [ success, failure ]
 
 # Doesn't work currently - https://github.com/christian-korneck/docker-pushrm/blob/master/README.md#limitations
+# https://github.com/docker/roadmap/issues/115
 
 # - name: pushrm-dockerhub
   # image: chko/docker-pushrm:1
