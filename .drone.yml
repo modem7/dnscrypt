@@ -1,7 +1,8 @@
 ---
+
 kind: pipeline
-type: docker
-name: lint
+name: buildtest
+
 steps:
   - name: Lint Dockerfile
     image: hadolint/hadolint:latest-alpine
@@ -10,17 +11,6 @@ steps:
       - hadolint --version
       - hadolint Dockerfile*
 
-trigger:
-  event:
-    - promote
-    - custom
-
----
-
-kind: pipeline
-name: buildtest
-
-steps:
   - name: Build Test
     image: docker
     volumes:
@@ -50,9 +40,6 @@ volumes:
     host: 
       path: /var/run/docker.sock
 
-depends_on:
-  - lint
-
 trigger:
   event:
     - promote
@@ -69,6 +56,13 @@ platform:
   arch: amd64
 
 steps:
+  - name: Lint Dockerfile
+    image: hadolint/hadolint:latest-alpine
+    pull: if-not-exists
+    commands:
+      - hadolint --version
+      - hadolint Dockerfile*
+
   - name: deploy
     image: thegeeklab/drone-docker-buildx
     privileged: true
@@ -128,7 +122,6 @@ trigger:
     - 2.1.0
 
 depends_on:
-  - lint
   - buildtest
 
 ---
@@ -142,6 +135,13 @@ platform:
   arch: amd64
 
 steps:
+  - name: Lint Dockerfile
+    image: hadolint/hadolint:latest-alpine
+    pull: if-not-exists
+    commands:
+      - hadolint --version
+      - hadolint Dockerfile*
+
   - name: deploy
     image: thegeeklab/drone-docker-buildx
     privileged: true
@@ -200,6 +200,3 @@ trigger:
   - cron
   cron:
   - dnscrypt_2-0-45
-
-depends_on:
-  - lint
